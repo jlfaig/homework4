@@ -1,0 +1,265 @@
+/*
+Copyright: 2016 Jenny Faig & Tyler LaVecchia
+*/
+
+html {
+  font-family:'Trebuchet MS',Arial,sans-serif;
+}
+
+@media screen and (min-width: 676px) {
+
+  body {
+    align-content: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+  }
+
+  form {
+    border-bottom: 1px solid RGB(0,0,128);
+    border-color: RGB(0,0,128);
+    border-style: solid;
+  }
+
+  h1 {
+    color: RGB(0,0,128);
+    font-weight: 900;
+    margin-left: 1em;
+    margin-top: 5%;
+  }
+
+  label {
+    font-weight: 500;
+    margin-left: 7em;
+  }
+
+  .amount {
+    margin-left: 7.3em;
+  }
+
+  .numYears {
+    margin-left: 8.5em;
+  }
+
+  input {
+    width: 45%;
+  }
+
+  .button {
+    background-color: #A9A9A9;
+    margin-left: 33%;
+    width: 12%;
+  }
+
+  footer {
+    border-color: RGB(0,0,128);
+    border-style: solid;
+    border-top: 2px solid RGB(0,0,128);
+  }
+
+  .copyright {
+    font-size: 1.1em;
+    margin-left: 5%;
+  }
+
+  .returnAmount {
+    margin-left: 6.6em;
+  }
+  
+  .returnRate {
+    margin-left: 6.4em;
+  }
+
+  .returnYears {
+    margin-left: 7.9em;
+  }
+
+  .futureVal {
+    margin-left: 9.6em;
+  }
+
+  .returnAmountNum,
+  .returnRateNum, 
+  .returnYearsNum, 
+  .futureValNum {
+    margin-left: 1em;
+  }
+  p {
+    margin-left: 2em;
+  }
+}
+
+@media screen and (min-width: 401px) and (max-width: 675px) {
+
+  body {
+    align-content: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+  }
+
+  form {
+    border-bottom: 1px solid RGB(0,0,128);
+    border-color: RGB(0,0,128);
+    border-style: solid;
+  }
+
+  h1 {
+    color: RGB(0,0,128);
+    font-weight: 900;
+    margin-left: 1em;
+    margin-top: 5%;
+  }
+
+  label {
+    font-weight: 500;
+    margin-left: 40%;
+  }
+
+  .amount {
+    margin-left: 40%;
+  }
+
+  .numYears {
+    margin-left: 42%;
+  }
+
+  input {
+    margin-left: 30%;
+    width: 50%;
+  }
+
+  .button {
+    background-color: #A9A9A9;
+    margin-left: 45%;
+    width: 8em;
+  }
+
+  footer {
+    border-color: RGB(0,0,128);
+    border-style: solid;
+    border-top: 2px solid RGB(0,0,128);
+  }
+
+  .copyright {
+    font-size: 1.1em;
+    margin-left: 5%;
+  }
+
+  .returnAmount {
+    margin-left: 2.7em;
+  }
+
+  .returnRate {
+    margin-left: 2.5em;
+  }
+
+  .returnYears {
+    margin-left: 3.9em;
+  }
+
+  .futureVal {
+    margin-left: 5.5em;
+  }
+
+  .returnAmountNum,
+  .returnRateNum,
+  .returnYearsNum,
+  .futureValNum {
+    margin-left: 1em;
+  }
+
+  p {
+    margin-left: 2em;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 400px) {
+
+  body {
+    align-content: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+  }
+
+  form {
+    border-bottom: 1px solid RGB(0,0,128);
+    border-color: RGB(0,0,128);
+    border-style: solid;
+  }
+
+  h1 {
+    color: RGB(0,0,128);
+    font-weight: 900;
+    margin-left: 1em;
+    margin-top: 5%;
+  }
+
+  label {
+    font-weight: 500;
+    margin-left: 15%;;
+  }
+
+  .amount {
+    margin-left: 15%;
+  }
+
+  .numYears {
+    margin-left: 15%;
+  }
+
+  input {
+    margin-left: 15%;
+    width: 60%;
+  }
+
+  .button {
+    background-color: #A9A9A9;
+    margin-left: 15%;
+    width: 25%;
+  }
+
+  footer {
+    border-color: RGB(0,0,128);
+    border-style: solid;
+    border-top: 2px solid RGB(0,0,128);
+  }
+
+  .copyright {
+    font-size: .8em;
+    margin-left: 5%;
+  }
+
+  .returnAmount {
+    font-size: .8em;
+    margin-left: 1.7em;
+  }
+
+  .returnRate {
+    font-size: .8em;
+    margin-left: 1.4em;
+  }
+
+  .returnYears {
+    font-size: .8em;
+    margin-left: 2.8em;
+  }
+
+  .futureVal {
+    font-size: .8em;
+    margin-left: 4.4em;
+  }
+
+  .returnAmountNum,
+  .returnRateNum,
+  .returnYearsNum,
+  .futureValNum {
+    font-size: .8em;
+    margin-left: .4em;
+  }
+
+  p {
+    margin-left: 2em;
+  }
+}
