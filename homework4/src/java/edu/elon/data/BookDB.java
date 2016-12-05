@@ -62,7 +62,7 @@ public class BookDB {
       Connection connection = pool.getConnection();
       PreparedStatement ps = null;
       
-      String query = "DELETE FROM Book " + "WHERE Email = ?";
+      String query = "DELETE FROM Book " + "WHERE BookId = ?";
       try {
           ps = connection.prepareStatement(query);
           ps.setString(1, book.getEmail());
