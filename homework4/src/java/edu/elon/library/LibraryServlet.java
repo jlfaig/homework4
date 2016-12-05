@@ -15,6 +15,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.sql.*;
 import edu.elon.business.Book;
+import edu.elon.data.BookDB;
 
 public class LibraryServlet extends HttpServlet {
 
@@ -32,6 +33,12 @@ public class LibraryServlet extends HttpServlet {
     
     if (action.equals("join")) {
       url = "/Welcome.jsp";
+    }
+    if (action.equals("display_checkout")) {
+        url = "/Checkout.jsp";
+    }
+    if (action.equals("display_cart")) {
+        url = "/Cart.jsp";
     }
     else if (action.equals("add")) {
       String firstName = request.getParameter("firstName");
