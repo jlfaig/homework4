@@ -93,12 +93,7 @@ public class Book implements Serializable {
     }
     
     public void setDueDate(Date dueDate) {
-       java.util.Date newDate = new Date(dueDate.getTime());
-       System.out.println("date:" + newDate);
-       Calendar calendar = GregorianCalendar.getInstance();
-       calendar.setTime(newDate);
-       calendar.add(Calendar.WEEK_OF_YEAR, 2);
-       this.dueDate = calendar.getTime();
+       this.dueDate = dueDate;
     }
     
     public String getFormatDate() {
