@@ -45,17 +45,15 @@ public class LibraryServlet extends HttpServlet {
         request.setAttribute("books", books);
         url = "/Cart.jsp";
     }
+    if (action.equals("delete")) {
+    }
     else if (action.equals("add")) {
-      String id = request.getParameter("bookId");
       String firstName = request.getParameter("firstName");
       String lastName = request.getParameter("lastName");
       String email = request.getParameter("email");
       String title = request.getParameter("title");
-      String dueDate = request.getParameter("dueDate");
       
-      int bookId = Integer.parseInt(id);
-      
-      book = new Book(bookId, firstName, lastName, email, title, dueDate);
+      book = new Book(firstName, lastName, email, title);
       url = "/Return.jsp";
       BookDB.insert(book);
     }

@@ -24,9 +24,12 @@ Copyright: 2016 Jenny Faig & William Breen
             <td>${book.firstName} ${book.lastName}</td>
             <td>${book.email}</td>
             <td>${book.title}</td>
-            <td>${book.dueDate}</td>
-            <td></td>
-            <td><input type="submit" value="Check in"</td>
+            <td>${book.formatDate}</td>
+            <td>
+                <c:if test="${book.isOverdue == true}">
+                    <p>overdue</p>
+                </c:if></td>
+            <td><input type="submit" value="Check in" formaction="library?action=delete"</td>
         </tr>
     </c:forEach>
 </table>

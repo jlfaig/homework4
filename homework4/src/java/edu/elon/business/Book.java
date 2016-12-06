@@ -22,7 +22,9 @@ public class Book implements Serializable {
     private String email;
     private String title;
     private Integer bookId;
-    private String dueDate;
+    private Date dueDate;
+    private Boolean isOverdue;
+    private java.sql.Date sqlDate;
     
     public Book() {
       bookId = null;
@@ -30,16 +32,20 @@ public class Book implements Serializable {
       lastName = "";
       email = "";
       title = "";
-      dueDate = "";
+      dueDate = null;
+      isOverdue = false;
+      sqlDate = null;
     }
     
-    public Book(Integer bookId, String firstName, String lastName, String email, String title, String dueDate) {
-      this.bookId = bookId;
+    public Book(String firstName, String lastName, String email, String title) {
       this.firstName = firstName;
       this.lastName = lastName;
       this.email = email;
       this.title = title;
-      this.dueDate = dueDate;
+      
+      Calendar calendar = GregorianCalendar.getInstance();
+      calendar.add(Calendar.WEEK_OF_YEAR, 2);
+      this.dueDate = calendar.getTime();
     }
     
     public Integer getBookId() {
@@ -82,23 +88,35 @@ public class Book implements Serializable {
       this.title = title;
     }
     
-    public String getDueDate() {
+    public Date getDueDate() {
       return dueDate;
     }
     
-    public void setDueDate(String dueDate) {
-       SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
-       Date date = null;
-       try {
-         date = (java.util.Date) formatter.parse(dueDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-       System.out.println("date:" + date);
-      Calendar calendar = GregorianCalendar.getInstance();
-      calendar.setTime(date);
-      calendar.add(Calendar.WEEK_OF_YEAR, 2);
+    public void setDueDate(Date dueDate) {
+       java.util.Date newDate = new Date(dueDate.getTime());
+       System.out.println("date:" + newDate);
+       Calendar calendar = GregorianCalendar.getInstance();
+       calendar.setTime(newDate);
+       calendar.add(Calendar.WEEK_OF_YEAR, 2);
+       this.dueDate = calendar.getTime();
+    }
+    
+    public String getFormatDate() {
       SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
-      this.dueDate = sdf.format(calendar.getTime());
+      return sdf.format(dueDate);
+    }
+    
+    public boolean getIsOverdue() {
+      Calendar calendar = GregorianCalendar.getInstance();
+     if (calendar.getTime().compareTo(dueDate) > 0) {
+      isOverdue = true;
+     }
+     System.out.println("today's date" + calendar.getTime());
+      return isOverdue;
+    }
+    
+    public Date setSQLDate(Date dueDate) {
+      sqlDate = new java.sql.Date(dueDate.getTime());
+      return sqlDate;
     }
 }
