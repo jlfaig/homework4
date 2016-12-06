@@ -9,9 +9,9 @@ Copyright: 2016 Jenny Faig & William Breen
 
 <table>
     
-    <tr>
+    <tr class="headers">
         <th class="patron">Patron Name</th>
-        <th>Email Address</th>
+        <th class="email">Email Address</th>
         <th>Book Title</th>
         <th>Due Date</th>
         <th>Overdue</th>
@@ -29,7 +29,12 @@ Copyright: 2016 Jenny Faig & William Breen
                 <c:if test="${book.isOverdue == true}">
                     <p>overdue</p>
                 </c:if></td>
-            <td><input type="submit" value="Check in" formaction="library?action=delete"</td>
+            <td>
+                <form action="library?action=deleteBook" method="post">
+                    <input type="hidden" name="bookId" value="${book.bookId}">
+                    <input type="submit" value="Check in">
+                </form>
+            </td>
         </tr>
     </c:forEach>
 </table>

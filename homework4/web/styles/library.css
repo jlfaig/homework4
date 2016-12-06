@@ -75,6 +75,7 @@ footer {
   
   .titleBlank {
       margin-left:4.4em;
+      width:18%;
   }
   
   .checkoutButton {
@@ -96,15 +97,18 @@ footer {
   .cartHeading {
       margin-left:2em;
   }
-  
+  .headers {
+      padding-left:10%;
+  }
   td {
       padding-left:4em;
   }
   
   .patron {
-      padding-left:2.2em;
+      padding-left:5%;
   }
   
   table {
       border-spacing:0.8em;
+      margin-left:2%;
   }

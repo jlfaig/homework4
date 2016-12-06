@@ -60,7 +60,7 @@ public class BookDB {
       }
   }
   
-  public static int delete(Book book) {
+  public static int delete(String bookId) {
       ConnectionPool pool = ConnectionPool.getInstance();
       Connection connection = pool.getConnection();
       PreparedStatement ps = null;
@@ -68,8 +68,9 @@ public class BookDB {
       String query = "DELETE FROM Book " + "WHERE BookId = ?";
       try {
           ps = connection.prepareStatement(query);
-          ps.setInt(1, book.getBookId());
-          
+          Integer id = Integer.parseInt(bookId);
+          ps.setInt(1, id); 
+         
           return ps.executeUpdate();
       } catch (SQLException e) {
           System.out.println(e);

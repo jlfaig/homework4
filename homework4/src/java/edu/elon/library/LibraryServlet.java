@@ -45,6 +45,13 @@ public class LibraryServlet extends HttpServlet {
         request.setAttribute("books", books);
         url = "/Cart.jsp";
     }
+    if (action.equals("deleteBook")) {
+      String id = request.getParameter("bookId");
+      BookDB.delete(id);
+      ArrayList<Book> books = BookDB.selectBooks();
+      request.setAttribute("books", books);
+      url="/Cart.jsp";
+    }
     if (action.equals("delete")) {
     }
     else if (action.equals("add")) {

@@ -7,8 +7,8 @@ Copyright: 2016 Jenny Faig & William Breen
   <section>
       <p class="response">
         Thank you for your patronage of the Belk Library. You've successfully
-        checked out the book, ${user.title}. Please note that this book is due
-        back on ______. A friendly reminder will be sent to you if your book 
+        checked out the book, <span>${book.title}<span>. Please note that this book is due
+        back on <span>${book.formatDate}</span>. A friendly reminder will be sent to you if your book 
         becomes overdue.
     </p>
     <p class="backLink"><a href="library?action=calculate_date"><b>Return to front page</b></a></p>
