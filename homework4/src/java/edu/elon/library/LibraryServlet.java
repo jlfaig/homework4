@@ -16,6 +16,9 @@ import javax.servlet.http.*;
 import java.sql.*;
 import edu.elon.business.Book;
 import edu.elon.data.BookDB;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class LibraryServlet extends HttpServlet {
 
@@ -38,15 +41,21 @@ public class LibraryServlet extends HttpServlet {
         url = "/Checkout.jsp";
     }
     if (action.equals("display_cart")) {
+        ArrayList<Book> books = BookDB.selectBooks();
+        request.setAttribute("books", books);
         url = "/Cart.jsp";
     }
     else if (action.equals("add")) {
+      String id = request.getParameter("bookId");
       String firstName = request.getParameter("firstName");
       String lastName = request.getParameter("lastName");
       String email = request.getParameter("email");
       String title = request.getParameter("title");
+      String dueDate = request.getParameter("dueDate");
       
-      book = new Book(firstName, lastName, email, title);
+      int bookId = Integer.parseInt(id);
+      
+      book = new Book(bookId, firstName, lastName, email, title, dueDate);
       url = "/Return.jsp";
       BookDB.insert(book);
     }

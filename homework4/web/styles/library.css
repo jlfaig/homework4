@@ -43,6 +43,7 @@ p {
 footer {
     margin-left:0;
     margin-right:0;
+    margin-top:2em;
     padding-top:1em;
     padding-left:2em;
     padding-bottom:3em;
@@ -50,4 +51,60 @@ footer {
     border-color: RGB(0,0,128);
     border-width:.15em;
     border-style: solid;
+  }
+  
+  .checkout {
+      margin-left:2em;
+  }
+  
+  label {
+      margin-left:3em;
+  }
+  
+  .fnameBlank {
+      margin-left:4em;
+  }
+  
+  .lnameBlank {
+      margin-left:4.2em;
+  }
+  
+  .emailBlank {
+      margin-left:2em;
+  }
+  
+  .titleBlank {
+      margin-left:4.4em;
+  }
+  
+  .checkoutButton {
+      margin-left:16.4em;
+      margin-bottom:2em;
+  }
+  
+  .response {
+      margin-left:2em;
+      margin-top:2em;
+      margin-right:2em;
+      margin-bottom:1em;
+  }
+  
+  .backLink {
+      margin-bottom:2em;
+  }
+  
+  .cartHeading {
+      margin-left:2em;
+  }
+  
+  td {
+      padding-left:4em;
+  }
+  
+  .patron {
+      padding-left:2.2em;
+  }
+  
+  table {
+      border-spacing:0.8em;
   }

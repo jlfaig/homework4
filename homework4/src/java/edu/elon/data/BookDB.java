@@ -7,6 +7,7 @@ package edu.elon.data;
 
 import java.sql.*;
 import edu.elon.business.Book;
+import java.util.ArrayList;
 
 public class BookDB {
   
@@ -15,14 +16,16 @@ public class BookDB {
     Connection connection = pool.getConnection();
     PreparedStatement ps = null;
     
-    String query = "INSERT INTO Book (firstName, lastName, email, title) " +
-            "VALUES (?, ?, ?, ?)";
+    String query = "INSERT INTO Book (firstName, lastName, email, title, dueDate) " +
+            "VALUES (?, ?, ?, ?, ?, ?)";
     try {
         ps = connection.prepareStatement(query);
-        ps.setString(1, book.getFirstName());
-        ps.setString(2, book.getLastName());
-        ps.setString(3, book.getEmail());
-        ps.setString(4, book.getTitle());
+        ps.setString(1, book.getBookId().toString());
+        ps.setString(2, book.getFirstName());
+        ps.setString(3, book.getLastName());
+        ps.setString(4, book.getEmail());
+        ps.setString(5, book.getTitle());
+        ps.setString(6, book.getDueDate().toString());
         return ps.executeUpdate();
     } catch (SQLException e) {
         System.out.println(e);
@@ -39,13 +42,14 @@ public class BookDB {
       PreparedStatement ps = null;
       
       String query = "UPDATE Book SET" + "FirstName = ?, " + "LastName = ?, "
-              + "Email = ?, " + "Title = ?";
+              + "Email = ?, " + "Title = ? + DueDate = ?";
       try {
           ps = connection.prepareStatement(query);
           ps.setString(1, book.getFirstName());
           ps.setString(2, book.getLastName());
           ps.setString(3, book.getEmail());
           ps.setString(4, book.getTitle());
+          ps.setString(5, book.getDueDate().toString());
           
           return ps.executeUpdate();
       } catch (SQLException e) {
@@ -77,26 +81,37 @@ public class BookDB {
       }
   }
   
-  public static boolean emailExists(String email) {
-      ConnectionPool pool = ConnectionPool.getInstance();
-      Connection connection = pool.getConnection();
-      PreparedStatement ps = null;
-      ResultSet rs = null;
-      
-      String query = "SELECT Email FROM Book " + "WHERE Email = ?";
-      try {
-          ps = connection.prepareStatement(query);
-          ps.setString(1, email);
-          rs = ps.executeQuery();
-          return rs.next();
-      } catch (SQLException e) {
-          System.out.println(e);
-          return false;
-      } finally {
-          DBUtil.closeResultSet(rs);
-          DBUtil.closePreparedStatement(ps);
-          pool.freeConnection(connection);
-      }
-  }
+  public static ArrayList<Book> selectBooks() {
+	ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+	
+	String query = "SELECT * FROM Book";
+	try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            ArrayList<Book> users = new ArrayList<Book>();
+            while (rs.next())
+            {
+                Book book = new Book();
+                book.setBookId((Integer)rs.getObject("BookId"));
+                book.setFirstName(rs.getString("FirstName"));
+                book.setLastName(rs.getString("LastName"));
+                book.setEmail(rs.getString("Email"));
+                book.setTitle(rs.getString("Title"));
+                book.setDueDate(rs.getString("DueDate"));
+                users.add(book);
+            }
+            return users;
+        } catch (SQLException e) {
+            System.out.println(e);
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }       
   
 }

@@ -6,6 +6,11 @@
 package edu.elon.business;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  *
@@ -16,19 +21,33 @@ public class Book implements Serializable {
     private String lastName;
     private String email;
     private String title;
+    private Integer bookId;
+    private String dueDate;
     
     public Book() {
+      bookId = null;
       firstName = "";
       lastName = "";
       email = "";
       title = "";
+      dueDate = "";
     }
     
-    public Book(String firstName, String lastName, String email, String title) {
+    public Book(Integer bookId, String firstName, String lastName, String email, String title, String dueDate) {
+      this.bookId = bookId;
       this.firstName = firstName;
       this.lastName = lastName;
       this.email = email;
       this.title = title;
+      this.dueDate = dueDate;
+    }
+    
+    public Integer getBookId() {
+      return bookId;
+    }
+    
+    public void setBookId(Integer bookId) {
+      this.bookId = bookId;
     }
     
     public String getFirstName() {
@@ -61,5 +80,25 @@ public class Book implements Serializable {
     
     public void setTitle(String title) {
       this.title = title;
+    }
+    
+    public String getDueDate() {
+      return dueDate;
+    }
+    
+    public void setDueDate(String dueDate) {
+       SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+       Date date = null;
+       try {
+         date = (java.util.Date) formatter.parse(dueDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+       System.out.println("date:" + date);
+      Calendar calendar = GregorianCalendar.getInstance();
+      calendar.setTime(date);
+      calendar.add(Calendar.WEEK_OF_YEAR, 2);
+      SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+      this.dueDate = sdf.format(calendar.getTime());
     }
 }
