@@ -97,18 +97,11 @@ footer {
   .cartHeading {
       margin-left:2em;
   }
-  .headers {
-      padding-left:10%;
-  }
-  td {
-      padding-left:4em;
-  }
-  
-  .patron {
-      padding-left:5%;
-  }
   
   table {
       border-spacing:0.8em;
       margin-left:2%;
+      width:80%;
+      text-align:left;
+      padding-left:4%;
   }
